@@ -18,6 +18,7 @@ This developer guide provides information that helps you to get started as a con
     * [Storage component](#storage-component)
     * [Common classes](#common-classes)
 * [Implementation](#implementation)
+* [Known Issues](#known-issues)
 * [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
 * [Appendix](#appendix)
     * [A: Product Scope](#a-product-scope)
@@ -161,49 +162,49 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 The TagList feature allows a user to display all the tags in the tag list currently.
 
 - How is TagList Command executed
-    1. The command is passed into LogicManager.
-    1. LogicManager calls parseCommand method of ProjactParser.
-    1. ProjactParser returns TagListCommand.
-    1. LogicManager executes TagListCommand, which sets isTagList parameter in CommandResult to true.
-    1. MainWindow detects CommandResult isTagList() returns true and hence invokes the showTagList() method.
+    1. The command is passed into `LogicManager`.
+    1. `LogicManager` calls parseCommand method of `ProjactParser`.
+    1. `ProjactParser` returns `TagListCommand`.
+    1. `LogicManager` executes `TagListCommand`, which sets isTagList parameter in `CommandResult` to true.
+    1. `MainWindow` detects `CommandResult` isTagList() returns true and hence invokes the showTagList() method.
     
-The diagram below shows a sample interaction of TagAddCommand. 
+The diagram below shows a sample interaction of `TagListCommand`. 
 
 ![TagListSequenceDiagram](images/TagListSequenceDiagram.png)
 
 
 - Why is it implemented that way:
-    - The feature was implemented to be as similar as possible to the current command classes, so that there would be minimal changes to the overall design of the product. Most new classes added to accommodate the TagListCommand would also be largely similar to classes implemented in AB3.
+    - The feature was implemented to be as similar as possible to the current command classes, so that there would be minimal changes to the overall design of the product. Most new classes added to accommodate the `TagListCommand` would also be largely similar to classes implemented in AB3.
 
 **TagFind feature**
 
 The TagFind feature allows a user to display all tags which contains at least one of the specified keywords.
 
-1. The command is passed in to LogicManager.
-2. LogicManager calls the parseCommand method of ProjactParser.
-3. ProjactParser identifies the commandWord, which in this case is 'tagfind' and the arguments.
-4. ProjactParser calls the parse method of TagFindCommandParser, which parses the argument, creates a new TagNameContainsKeywordsPredicate object with the keywords, and returns a new TagFindCommand with the new TagNameContainsKeywordsPredicate object used as an argument.
-5. The LogicManager then calls the execute method of the TagFindCommand, which calls the updateFilteredTagList method of Model. This method takes in a `Predicate<Tag>` and filters the TagList by the supplied predicate.
+1. The command is passed in to `LogicManager`.
+2. `LogicManager` calls the parseCommand method of `ProjactParser`.
+3. `ProjactParser` identifies the commandWord, which in this case is 'tagfind' and the arguments.
+4. `ProjactParser` calls the parse method of `TagFindCommandParser`, which parses the argument, creates a new `TagNameContainsKeywordsPredicate` object with the keywords, and returns a new `TagFindCommand` with the new `TagNameContainsKeywordsPredicate` object used as an argument.
+5. The `LogicManager` then calls the execute method of the `TagFindCommand`, which calls the updateFilteredTagList method of `Model`. This method takes in a `Predicate<Tag>` and filters the `TagList` by the supplied predicate.
 
-The diagram below shows a sample interaction of TagAddCommand. 
+The diagram below shows a sample interaction of `TagFindCommand`. 
 
 ![TagFindSequenceDiagram](images/TagFindSequenceDiagram.png)
 
 - Why is it implemented that way:
-    - In order to make use of the existing codebase while keeping to the principle of accomplishing a task with a single action rather than a series of actions, we decided to find a Tag by keywords rather than navigating to a Tag by index.
+    - In order to make use of the existing codebase while keeping to the principle of accomplishing a task with a single action rather than a series of actions, we decided to find a `Tag` by keywords rather than navigating to a `Tag` by index.
 
 ### Future implementation plans
 **TagAdd feature**
 
 The TagAdd feature allows a user to add a new tag to the tag list. The tag added will not have any people in it initially.
 
-1. The command is passed into LogicManager.
-2. LogicManager calls the parseCommand method of ProjactParser.
-3. ProjactParser identifies the commandWord, which in this case is 'tagadd' and the arguments.
-4. ProjactParser calls the parse method of TagAddCommandParser, which parses the argument, creates a new Tag object, and returns a new TagAddCommand with the new Tag object used as an argument.
-5. The LogicManager then calls the execute method of the TagAddCommand, which calls the addTag method of Model.
+1. The command is passed into `LogicManager`.
+2. `LogicManager` calls the parseCommand method of `ProjactParser`.
+3. `ProjactParser` identifies the commandWord, which in this case is 'tagadd' and the arguments.
+4. `ProjactParser` calls the parse method of `TagAddCommandParser`, which parses the argument, creates a new `Tag` object, and returns a new `TagAddCommand` with the new `Tag` object used as an argument.
+5. The `LogicManager` then calls the execute method of the `TagAddCommand`, which calls the addTag method of `Model`.
 
-The diagram below shows a sample interaction of TagAddCommand. 
+The diagram below shows a sample interaction of `TagAddCommand`. 
 
 ![TagAddSequenceDiagram](images/TagAddSequenceDiagram.png)
 
@@ -212,40 +213,38 @@ The diagram below shows a sample interaction of TagAddCommand.
 
 **TagEdit feature**
 
-1. The command is passed in to LogicManager.
-2. LogicManager calls the parseCommand method of ProjactParser.
-3. ProjactParser identifies the commandWord, which in this case is 'tagedit' and the arguments.
-4. ProjactParser calls the parse method of TagEditCommandParser, which parses the argument, creates a new Index object, and returns a new TagEditCommand with the new Tag object used as an argument.
-5. The LogicManager then calls the execute method of the TagEditCommand, which create a new Tag object with the edited field and replaces the current Tag object at the specified index in FilteredTagList.
-6. FilteredTagList is updated with the edited Tag object and will reflect the changes in the GUI.
+1. The command is passed in to `LogicManager`.
+2. `LogicManager` calls the parseCommand method of `ProjactParser`.
+3. `ProjactParser` identifies the commandWord, which in this case is 'tagedit' and the arguments.
+4. `ProjactParser` calls the parse method of `TagEditCommandParser`, which parses the argument, creates a new `Index` object and a new `EditTagDescriptor`object, and returns a new `TagEditCommand` with those objects used as arguments.
+5. The `LogicManager` then calls the execute method of the `TagEditCommand`, which create a new `Tag` object with the edited field and replaces the current `Tag` object at the specified index in `FilteredTagList`.
+6. `FilteredTagList` is updated with the edited `Tag` object and will reflect the changes in the `Model`.
 
-The diagram below shows a sample interaction of TagEditCommand.
+The diagram below shows a sample interaction of `TagEditCommand`.
 
 ![Sequence Diagram of Tag Edit](images/TagEditSequenceDiagram.png)
-
-**Note:** The lifeline for `TagEditCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
   
 - Why is it implemented that way:
   - The implementation of the TagEdit command is very similar to the Edit command so that we can reuse the previous code.
-  - For example, by making the keyword `tagedit` instead of `tag edit`, we are able to make use of ProjectParser instead of creating a different parser just to identify tag commands.
+  - For example, by making the commandWord 'tagedit' instead of 'tag edit', we are able to make use of `ProjectParser` instead of creating a different parser just to identify tag commands.
 
 **TagDelete feature**
 
 The TagDelete feature allows a user to delete a tag permanently. This feature will result in the removal of the tag from the tag list and from any contact with said tag.
 
 How it would be implemented:
-1. The command is passed in to LogicManager.
-2. LogicManager calls the parseCommand method of ProjactParser.
-3. ProjactParser identifies the commandWord, which in this case is 'tagdelete' and the arguments.
-4. ProjactParser calls the parse method of TagDeleteCommandParser, which parses the argument, creates a new Index object with the parsed user input, and returns a new TagDeleteCommand with the new Index object used as an argument.
-5. The LogicManager then calls the execute method of the TagDeleteCommand, which retrieves the most updated tag list from the ModelManager. From this list, the tag to be deleted is retrieved by its index. Then, the ModelManager will go on to remove all instances of the tag.
+1. The command is passed in to `LogicManager`.
+2. `LogicManager` calls the parseCommand method of `ProjactParser`.
+3. `ProjactParser` identifies the commandWord, which in this case is 'tagdelete' and the arguments.
+4. `ProjactParser` calls the parse method of `TagDeleteCommandParser`, which parses the argument, creates a new `Index` object with the parsed user input, and returns a new `TagDeleteCommand` with the new `Index` object used as an argument.
+5. The `LogicManager` then calls the execute method of the `TagDeleteCommand`, which retrieves the most updated tag list from the `ModelManager`. From this list, the tag to be deleted is retrieved by its index. Then, the `ModelManager` will go on to remove all instances of the tag.
 
-The diagram below shows a sample interaction of TagDeleteCommand.
+The diagram below shows a sample interaction of `TagDeleteCommand`.
 
 ![TagDeleteSequenceDiagram](images/TagDeleteSequenceDiagram.png)
  
 - Why is it implemented that way:
-    - The feature was implemented to be as similar as possible to the current command classes, so that there would be minimal changes to the overall design of the product. Most new classes added to accommodate the TagDeleteCommand would also be largely similar to classes implemented in AB3.
+    - The feature was implemented to be as similar as possible to the current command classes, so that there would be minimal changes to the overall design of the product. Most new classes added to accommodate the `TagDeleteCommand` would also be largely similar to classes implemented in AB3.
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Known Issues**
@@ -264,8 +263,8 @@ Technicalities/Explanations: The problem is caused by an ongoing change in Model
 ## **Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
 * [Logging guide](Logging.md)
+* [Testing guide](Testing.md)
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
 
@@ -295,7 +294,7 @@ Technicalities/Explanations: The problem is caused by an ongoing change in Model
 * Filters the main person list such that inactive contacts will not be seen.
 
 --------------------------------------------------------------------------------------------------------------------
-## **B: User Stories**
+### **B: User Stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -325,11 +324,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | power user	                                | import and export person list to another device  | save time compiling the person list                                    |
 
 --------------------------------------------------------------------------------------------------------------------
-## **C: Use Cases**
+### **C: Use Cases**
 
 (For all use cases below, the **System** is the `Projact` and the **Actor** is the `user`, unless specified otherwise)
 
-### **Use case: Delete a person**
+#### **Use case: Delete a person**
 
 **MSS**
 
@@ -352,7 +351,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-### **Use case: Create a Tag**
+#### **Use case: Create a Tag**
 
 **MSS**
 
@@ -369,7 +368,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-### **Use case: Delete a tag**
+#### **Use case: Delete a tag**
 
 **MSS**
 
@@ -392,7 +391,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-### **Use case: List all tags**
+#### **Use case: List all tags**
 
 **MSS**
 
@@ -407,7 +406,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-### **Use case: View tag members**
+#### **Use case: View tag members**
 
 **MSS**
 
@@ -434,7 +433,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-### **Use case: Edit tag**
+#### **Use case: Edit tag**
 
 **MSS**
 
@@ -466,7 +465,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 *{More to be added}*
 
 --------------------------------------------------------------------------------------------------------------------
-## **D: Non-Functional Requirements**
+### **D: Non-Functional Requirements**
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 1.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
@@ -491,13 +490,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. The user’s data should not be accessible by developers of the product.
 
 --------------------------------------------------------------------------------------------------------------------
-## **E: Glossary**
+### **E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
-## **F: Instructions for manual testing**
+### **F: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -506,7 +505,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+#### Launch and shutdown
 
 1. Initial launch
 
@@ -522,7 +521,7 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-### Deletes a person
+#### Deletes a person
 
 1. Deleting a person while all persons are being shown
 
@@ -538,7 +537,7 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 
-### Saves data
+#### Saves data
 
 1. Dealing with missing/corrupted data files
 
