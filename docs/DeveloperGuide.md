@@ -47,15 +47,18 @@ This developer guide provides information that helps you to get started as a con
             * [Clears completed tasks](#clears-completed-tasks)
         * [Saves data](#saves-data)
         
---------------------------------------------------------------------------------------------------------------------
-
 <div style="page-break-after: always;"></div>
+    
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Design**
 
