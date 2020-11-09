@@ -48,6 +48,7 @@ This developer guide provides information that helps you to get started as a con
         * [Saves data](#saves-data)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Setting up, getting started**
 
@@ -98,6 +99,8 @@ The *Sequence Diagram* below shows how the components interact with each other f
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
 The sections below give more details of each component.
+
+<div style="page-break-after: always;"></div>
 
 ### UI component
 
