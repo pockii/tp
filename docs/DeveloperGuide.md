@@ -46,8 +46,9 @@ This developer guide provides information that helps you to get started as a con
             * [Deletes a task](#deletes-a-task)
             * [Clears completed tasks](#clears-completed-tasks)
         * [Saves data](#saves-data)
-
+        
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 ## **Setting up, getting started**
