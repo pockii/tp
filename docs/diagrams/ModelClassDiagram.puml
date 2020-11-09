@@ -4,16 +4,16 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-Package Model <<Rectangle>>{
+Package Model <<Rectangle>> {
 Interface ReadOnlyProjact <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
+Interface ReadOnlyUserPrefs <<Interface>>
 Class Projact
 Class ReadOnlyProjact
 Class Model
 Class ModelManager
 Class UserPrefs
-Class ReadOnlyUserPrefs
 
 Package Person\n {
 Class Person
@@ -39,13 +39,13 @@ Class TagTask
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-Projact .up.|> ReadOnlyProjact
+Projact .right.|> ReadOnlyProjact
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" Projact
-ModelManager o-left-> "1" UserPrefs
-UserPrefs .up.|> ReadOnlyUserPrefs
+ModelManager o-down-> "1" Projact
+ModelManager o-down-> "1" UserPrefs
+UserPrefs .left.|> ReadOnlyUserPrefs
 
 Projact *--> "1" UniquePersonList
 UniquePersonList o--> "*" Person
@@ -64,13 +64,5 @@ UniqueTagList o--> "*" Tag
 Tag *--> TagName
 Tag *--> MeetingLink
 Tag *--> "*" TagTask
-
-
-ModelManager --> Person : \n sorted list
-ModelManager --> Person : \nfiltered list\t
-
-ModelManager --> Tag : \n filtered list
-ModelManager --> Tag : \n  sorted list
-
 
 @enduml

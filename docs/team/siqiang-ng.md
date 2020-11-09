@@ -9,7 +9,7 @@ Projact is a contact and project management app that helps NUS computing student
 
 Given below are my contributions to the project.
 
-<div style="page-break-after: always;">
+
 #### New Features Added
 * **Feature**: Command to list all the tags in the tag list. (Pull request [\#57](https://github.com/AY2021S1-CS2103T-T17-4/tp/pull/57))
   * Justification: allows the user to keep track of all the tags that have been added.
@@ -35,7 +35,7 @@ Given below are my contributions to the project.
 * **Feature**: Added the UI to display the tasklist in each tag. (Pull request [\#139](https://github.com/AY2021S1-CS2103T-T17-4/tp/pull/139))
   * What it does: allows the user to view the tasklist under each tag.
   * Justification: This feature allows the user to view the tasks under each tag.
-</div>
+
 
 #### Enhancements to Existing Features
 * **Enhancement**: Wrote additional tests for existing features to increase coverage 
