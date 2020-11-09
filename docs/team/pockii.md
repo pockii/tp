@@ -41,7 +41,7 @@ Given below are my contributions to the project.
   * Credits: Used [FontAwesome5](https://github.com/kordamp/ikonli) for the icons.
  
 #### Code Contributed
-* [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=pockii)
+* [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=pockii&sort=groupTitle&sortWithin=title&since=2020-08-14&until=2020-11-09&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 #### Project Management
 * Managed the issue tracker for v1.1
