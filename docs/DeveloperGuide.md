@@ -29,6 +29,7 @@ This developer guide provides information that helps you to get started as a con
     * [C: Use Cases](#c-use-cases)
     * [D: Non-Functional Requirements](#d-non-functional-requirements)
     * [E: Glossary](#e-glossary)
+    
     * [F: Instructions for Manual Testing](#f-instructions-for-manual-testing)
         * [Launch and Shut Down](#launch-and-shutdown)
         * [Contact Commands](#contact-commands)
@@ -56,10 +57,7 @@ This developer guide provides information that helps you to get started as a con
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
-<div style="page-break-after: always;"></div>
-
 --------------------------------------------------------------------------------------------------------------------
-
 
 ## **Design**
 
@@ -136,12 +134,16 @@ The `UI` component,
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
+<div style="page-break-after: always;"></div>
+
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 ### Model component
 
@@ -156,12 +158,15 @@ The `Model`,
 * exposes unmodifiable `ObservableList<Person>` and `ObservableList<Tag>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
+<div style="page-break-after: always;"></div>
+
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `Projact`, and its `TagName` is referenced by `Person`. This allows `Projact` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
 
+<div style="page-break-after: always;"></div>
 
 ### Storage component
 
@@ -176,6 +181,8 @@ The `Storage` component,
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Implementation**
